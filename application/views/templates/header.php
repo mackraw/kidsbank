@@ -11,9 +11,9 @@ Header template.
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="./../../../assets/css/bootstrap.css" rel="stylesheet">
   <link href="./../../../assets/css/main.css" rel="stylesheet">
-  <meta name="keywords" content="coding07" />
-  <meta name="description" content="A demonstration of MVC with Codeigniter" />
-  <meta name="Author" content="Maciej Krawczyk" />
+  <meta name="keywords" content="money kids financial education bank account" />
+  <meta name="description" content="Financial education for children using mock online bank accounts." />
+  <meta name="Author" content="Mac Krawczyk" />
   <link rel="shortcut icon" href="./../../../favicon.png" type="image/png">
 </head>
 
