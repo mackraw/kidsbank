@@ -1,0 +1,25 @@
+<!-- -------------------
+Name: Maciej Krawczyk
+Coding 07
+Purpose: HTML template for displaying results of the API call.
+------------------- -->
+
+{{#.}}
+<div class="col-md-5 mb-3">
+  <div class="card">
+    <div class="card-body">
+    <h3 class="card-title">{{name}}</h3>
+    <p class="card-text">
+      {{#address}}
+      {{house_number}} 
+      {{road}}, 
+      {{city}} 
+      {{/address}}
+    </p>
+    <a href="https://www.google.com/maps/dir//{{lat}},{{lon}}" target="_blank" class="card-link">
+      Get directions from Google Maps
+    </a>
+    </div>
+  </div>
+</div>
+{{/.}}

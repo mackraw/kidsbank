@@ -1,0 +1,189 @@
+/* Main styles. */
+
+/* HERO */
+
+@font-face {
+  font-family: Poppins;
+  src: url("./../typography/poppins-regular-webfont.woff2");
+}
+
+.hero {
+  background: -o-linear-gradient(
+      left,
+      hsla(130, 10%, 1%, 0.5),
+      hsla(130, 10%, 1%, 0.8)
+    ),
+    url("./../images/plant.jpg") center / cover no-repeat;
+  background: -webkit-gradient(
+      linear,
+      left top,
+      right top,
+      from(hsla(130, 10%, 1%, 0.5)),
+      to(hsla(130, 10%, 1%, 0.8))
+    ),
+    url("./../images/plant.jpg") center / cover no-repeat;
+  background: linear-gradient(
+      90deg,
+      hsla(130, 10%, 1%, 0.5),
+      hsla(130, 10%, 1%, 0.8)
+    ),
+    url("./../images/plant.jpg") center / cover no-repeat;
+  height: 92vh;
+  color: var(--white);
+  text-shadow: 0 0 3px var(--black);
+  position: relative;
+}
+
+.hero-text {
+  font-family: Poppins;
+  text-align: center;
+  padding: 1em;
+  line-height: 1.25;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+@media screen and (min-width: 665px) {
+  .hero-text {
+    text-align: start;
+    left: 55%;
+  }
+}
+
+.hero-title {
+  font-size: clamp(1.6rem, 3.75vw, 3rem);
+}
+
+.hero-subtitle {
+  font-size: clamp(1.6rem, 3.75vw, 3rem);
+  font-weight: 200;
+  margin-bottom: 1rem;
+}
+
+.hero-para {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  line-height: 1.35;
+  max-width: 486px;
+}
+
+/* NUMBER */
+
+.number {
+  width: clamp(1.5rem, 7vw, 5rem);
+  height: clamp(1.5rem, 7vw, 5rem);
+  border-radius: 50%;
+  text-align: center;
+  vertical-align: middle;
+  line-height: clamp(1.25rem, 6vw, 4.5rem);
+  font-size: clamp(1.25rem, 6vw, 4.5rem);
+}
+
+/* ABOUT HERO */
+
+.about-hero {
+  background: radial-gradient(hsla(120, 40%, 15%, 0.5), hsla(120, 5%, 10%, 0.7)),
+    url(./../images/team.jpg);
+  background-size: cover;
+  background-position: center center;
+  height: 50vh;
+}
+
+/* LOCATION PAGE */
+
+.location-hero {
+  background: radial-gradient(hsla(120, 40%, 15%, 0.5), hsla(120, 5%, 10%, 0.7)),
+    url(./../images/buildings.jpg);
+  background-size: cover;
+  background-position: center center;
+  height: 50vh;
+}
+
+.results {
+  max-width: 1024px;
+}
+
+/* SIGN UP */
+.signup {
+  background: radial-gradient(
+      ellipse at 75%,
+      hsla(130, 10%, 1%, 0.8) 60%,
+      hsla(130, 10%, 1%, 0.5)
+    ),
+    url(./../images/kid.jpg);
+  background-size: cover;
+  background-position: center center;
+}
+
+/* CONTACT */
+.contact {
+  background: radial-gradient(
+      ellipse at 75%,
+      hsla(130, 10%, 1%, 0.8) 60%,
+      hsla(130, 10%, 1%, 0.5)
+    ),
+    url(./../images/arrow.jpg);
+  background-size: cover;
+  background-position: center center;
+}
+
+/* FEATURED ARTICLE */
+
+.featured div:first-child {
+  background-color: hsla(120, 43%, 55%, 0.233);
+}
+
+/* TYPOGRAPHY */
+
+.navbar-brand {
+  font-family: Poppins;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+.display-1 {
+  font-family: Poppins;
+  font-size: clamp(2rem, 7vw, 6.5rem);
+}
+
+.display-2 {
+  font-family: Poppins;
+  font-size: clamp(1.6rem, 5vw, 5.5rem);
+}
+
+.display-3 {
+  font-family: Poppins;
+  font-size: clamp(1.4rem, 4vw, 4.5rem);
+}
+
+.display-6 {
+  font-family: Poppins;
+  font-size: clamp(1.3rem, 3vw, 3.5rem);
+}
+
+.h4 {
+  font-family: Poppins;
+  font-size: clamp(1.2rem, 2.5vw, 2rem);
+}
+
+.lead {
+  font-size: clamp(1rem, 2.25vw, 1.6rem);
+}
+
+p {
+  font-size: clamp(0.8rem, 2vw, 1.2rem);
+}
+
+.icon {
+  height: clamp(1.5rem, 7vw, 5rem);
+  width: auto;
+}
+
+.copy {
+  font-size: clamp(0.8rem, 2vw, 1rem);
+}
+
+.form-label {
+  font-size: clamp(0.8rem, 2vw, 1.2rem);
+}
