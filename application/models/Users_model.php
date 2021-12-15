@@ -29,4 +29,11 @@ class Users_model extends CI_Model {
       return false;
     }
   }
+
+  public function get_name() {
+    $user_id = $this->session->userdata('user_id');
+    $this->db->where('id', $user_id);
+    $query = $this->db->get('users');
+    return $query->row()->name;
+  }
 }
