@@ -45,7 +45,7 @@ class Users extends CI_Controller {
             $headers .= "MIME-Version: 1.0\r\n";
             $headers .= "Content-type: text/html; charset=iso-8859-1\r\n";
             $subject = "Verify your registration at the Kids' Bank";
-            $body = "Hi " . $name . ",<br><br>Thanks for registering with Kids' Bank. You may now go to the login page.<br><br>Regards,<br><br>Kids' Bank Team";
+            $body = "Hi " . $name . ",<br><br>Thanks for registering with Kids' Bank. You may now <a href=\"https://kidsbank.live/\">login</a>.<br><br>Regards,<br><br>Kids' Bank Team";
 
             if (mail(
               $email,
