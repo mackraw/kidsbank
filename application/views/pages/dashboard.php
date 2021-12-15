@@ -1,12 +1,12 @@
 <!-- -------------------
-Static Dashboard page.
+Dashboard page.
 ------------------- -->
 
 <section class="px-3 py-5 p-lg-5">
   <div class="container-fluid">
     <div class="row">
       <div class="col mb-3 mb-lg-5">
-        <h2 class="display-4">Hello, John Smith!</h2>
+        <h2 class="display-4">Hello, <?= $user_name ?>!</h2>
       </div>
     </div>
   </div>
@@ -45,6 +45,6 @@ Static Dashboard page.
         </div>
       </div>
     </div>
-    <button type="button" class="btn btn-success mt-5">+ Create a New Account</button>
+    <a href="newaccount" id="newAccountBtn" class="btn btn-success mt-5">+ New Account</a>
   </div>
 </section>
