@@ -1,6 +1,4 @@
-<!-- -------------------
-Static Contact page.
-------------------- -->
+<!-- Static Contact page. -->
 
 <section class="contact container-fluid">
   <div class="row justify-content-start">
