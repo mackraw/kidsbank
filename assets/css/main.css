@@ -187,3 +187,8 @@ p {
 .form-label {
   font-size: clamp(0.8rem, 2vw, 1.2rem);
 }
+
+.money-l1 {
+  font-size: clamp(1.3rem, 2.55vw, 1.8rem);
+  vertical-align: middle;
+}
