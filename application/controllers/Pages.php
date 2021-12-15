@@ -43,6 +43,12 @@ class Pages extends CI_Controller {
       array_push($footerdata['scripts'], array('script' => './../../../assets/js/login.js'));
     }
 
+    if ($page == 'newaccount') {
+      $headerdata['pagetitle'] = 'Create New Bank Account - Kids\' Bank';
+      array_push($footerdata['scripts'], array('script' => './../../../assets/js/main.js'));
+      array_push($footerdata['scripts'], array('script' => './../../../assets/js/dashboard.js'));
+    }
+
     $this->load->library('parser');
     $this->load->view('templates/header', $headerdata);
     $this->load->view('pages/' . $page);
