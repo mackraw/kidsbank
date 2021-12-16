@@ -20,8 +20,36 @@ class Dashboard extends CI_Controller {
       $headerdata['pagetitle'] = 'My Dashboard - Kids\' Bank';
 
       $user_name = $this->users_model->get_name();
-
       $bodydata['user_name'] = $user_name;
+
+      $user_accounts_db = $this->accounts_model->get_accounts();
+      $accounts = [];
+      for ($i = 0; $i < count($user_accounts_db); $i++) {
+        foreach ($user_accounts_db[$i] as $key => $value) {
+          if ($key == 'type') {
+            switch ($value) {
+              case '1':
+                $accounts[$i]['type'] = 'Checking';
+                break;
+              case '2':
+                $accounts[$i]['type'] = 'Credit';
+                break;
+            }
+          }
+          if ($key == 'name') {
+            $accounts[$i]['name'] = $value;
+          }
+          if ($key == 'balance') {
+            $fmt = numfmt_create('en_US', NumberFormatter::CURRENCY);
+            $accounts[$i]['balance'] = numfmt_format_currency($fmt, $value, "USD");
+          }
+          if ($key == 'created_date') {
+            $date = new DateTime($value);
+            $accounts[$i]['created_date'] = $date->format('F j, Y');
+          }
+        }
+      }
+      $bodydata['accounts'] = $accounts;
 
       $footerdata = array(
         'localtime' => date('Y'),
@@ -35,7 +63,7 @@ class Dashboard extends CI_Controller {
       );
 
       $this->load->view('templates/header', $headerdata);
-      $this->load->view('pages/dashboard', $bodydata);
+      $this->parser->parse('pages/dashboard', $bodydata);
       $this->parser->parse('templates/footer', $footerdata);
     }
   }
