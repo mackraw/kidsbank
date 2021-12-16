@@ -29,20 +29,22 @@ Dashboard page.
       </div>
       <div class="card-body">
 
+        {accounts}
         <div class="row justify-content-between mx-3 pb-3 pl-3 pr-3 border-bottom">
           <div>
             <div>
-              <span class="font-weight-bold">ACCOUNT NAME</span>
+              <span class="font-weight-bold">{name}</span>
             </div>
             <div>
-              <span class="text-secondary">Account #012505151</span>
-              <span class="ml-5 text-secondary">Account type: Checking</span>
+              <span class="text-secondary">Active since: {created_date}</span>
+              <span class="ml-5 text-secondary">Account type: {type}</span>
             </div>
           </div>
           <div>
-            <span class="money-l1 font-weight-bold">$2,455.78</span>
+            <span class="money-l1 font-weight-bold">{balance}</span>
           </div>
         </div>
+        {/accounts}
       </div>
     </div>
     <a href="newaccount" id="newAccountBtn" class="btn btn-success mt-5">+ New Account</a>
