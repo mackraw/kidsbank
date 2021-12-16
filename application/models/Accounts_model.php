@@ -13,4 +13,11 @@ class Accounts_model extends CI_Model {
 
     return $this->db->insert('accounts', $data);
   }
+
+  public function get_accounts() {
+    $user_id = $this->session->userdata('user_id');
+    $this->db->where('user_id', $user_id);
+    $query = $this->db->get('accounts');
+    return $query->result_array();
+  }
 }
