@@ -16,7 +16,7 @@ Dashboard page.
       <div class="card-body">
         <div class="row justify-content-between align-items-center mx-3 px-3">
           <span>TOTAL BALANCE AVAILABLE</span>
-          <span id="totalBalance" class="money-l1 font-weight-bold">$2,455.67</span>
+          <span id="totalBalance" class="money-l1 font-weight-bold">{total}</span>
         </div>
       </div>
     </div>
@@ -33,7 +33,7 @@ Dashboard page.
         <div class="row justify-content-between mx-3 pb-3 pl-3 pr-3 border-bottom">
           <div>
             <div>
-              <span class="font-weight-bold">{name}</span>
+              <a href="/account/{account_id}" class="font-weight-bold">{name}</a>
             </div>
             <div>
               <span class="text-secondary">Active since: {created_date}</span>
