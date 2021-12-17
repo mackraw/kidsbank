@@ -51,7 +51,6 @@ class Articles extends CI_Controller {
 
     $headerdata['pagetitle'] = $article['title'] . ' - Kids\' Bank';
 
-    // $bodydata['title'] = $article['title'];
     $bodydata['article'] = $this->parser->parse('templates/article_template', $article, TRUE);
 
     $footerdata = array(
