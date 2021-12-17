@@ -24,7 +24,12 @@ class Dashboard extends CI_Controller {
 
       $user_accounts_db = $this->accounts_model->get_accounts();
       $accounts = [];
+      $total = 0;
       for ($i = 0; $i < count($user_accounts_db); $i++) {
+        if ($user_accounts_db[$i]['balance']) {
+          $dollars = $user_accounts_db[$i]['balance'] / 100;
+          $total .= $dollars;
+        }
         foreach ($user_accounts_db[$i] as $key => $value) {
           if ($key == 'type') {
             switch ($value) {
@@ -39,9 +44,12 @@ class Dashboard extends CI_Controller {
           if ($key == 'name') {
             $accounts[$i]['name'] = $value;
           }
+          if ($key == 'id') {
+            $accounts[$i]['account_id'] = $value;
+          }
           if ($key == 'balance') {
             $fmt = numfmt_create('en_US', NumberFormatter::CURRENCY);
-            $accounts[$i]['balance'] = numfmt_format_currency($fmt, $value, "USD");
+            $accounts[$i]['balance'] = numfmt_format_currency($fmt, $value / 100, "USD");
           }
           if ($key == 'created_date') {
             $date = new DateTime($value);
@@ -50,6 +58,9 @@ class Dashboard extends CI_Controller {
         }
       }
       $bodydata['accounts'] = $accounts;
+
+      $fmt = numfmt_create('en_US', NumberFormatter::CURRENCY);
+      $bodydata['total'] = numfmt_format_currency($fmt, $total, "USD");
 
       $footerdata = array(
         'localtime' => date('Y'),
