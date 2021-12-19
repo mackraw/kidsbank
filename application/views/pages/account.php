@@ -42,7 +42,7 @@ Account page.
         <span class="col-auto col-md-4 text-secondary">{name}</span>
         <span class="col-auto col-md-2 text-secondary text-center">{type}</span>
         <span class="money-l2 col-auto col-md-2 font-weight-bold text-center">{amount}</span>
-        <span class="money-l2 col-auto col-md-2 font-weight-bold text-center">$2,455.78</span>
+        <span class="money-l2 col-auto col-md-2 font-weight-bold text-center">{balance_after}</span>
       </div>
       {/transactions}
     </div>
