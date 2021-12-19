@@ -147,10 +147,10 @@ class Dashboard extends CI_Controller {
         if ($key == 'trans_type_code') {
           switch ($value) {
             case '1':
-              $transactions[$i]['type'] = 'Checking';
+              $transactions[$i]['type'] = 'Deposit';
               break;
             case '2':
-              $transactions[$i]['type'] = 'Credit';
+              $transactions[$i]['type'] = 'Withdrawal';
               break;
           }
         }
@@ -165,6 +165,10 @@ class Dashboard extends CI_Controller {
           $date = new DateTime($value);
           $transactions[$i]['month'] = $date->format('M');
           $transactions[$i]['day'] = $date->format('j');
+        }
+        if ($key == 'balance_after') {
+          $fmt = numfmt_create('en_US', NumberFormatter::CURRENCY);
+          $transactions[$i]['balance_after'] = numfmt_format_currency($fmt, $value / 100, "USD");
         }
       }
     }
