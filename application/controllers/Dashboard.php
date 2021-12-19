@@ -123,4 +123,67 @@ class Dashboard extends CI_Controller {
       }
     }
   }
+
+  public function view($account_id = NULL) {
+    $account = $this->accounts_model->get_account($account_id);
+
+    if (empty($account_id)) {
+      show_404();
+    }
+
+    // add check to view only own account
+
+    $headerdata['pagetitle'] = $account['name'] . ' Account at Kids\' Bank';
+
+    $bodydata['name'] = $account['name'];
+
+    $fmt = numfmt_create('en_US', NumberFormatter::CURRENCY);
+    $bodydata['balance'] = numfmt_format_currency($fmt, $account['balance'] / 100, "USD");
+
+    $transactions = [];
+
+    for ($i = 0; $i < count($account['transactions']); $i++) {
+      foreach ($account['transactions'][$i] as $key => $value) {
+        if ($key == 'trans_type_code') {
+          switch ($value) {
+            case '1':
+              $transactions[$i]['type'] = 'Checking';
+              break;
+            case '2':
+              $transactions[$i]['type'] = 'Credit';
+              break;
+          }
+        }
+        if ($key == 'trans_amount') {
+          $fmt = numfmt_create('en_US', NumberFormatter::CURRENCY);
+          $transactions[$i]['amount'] = numfmt_format_currency($fmt, $value / 100, "USD");
+        }
+        if ($key == 'name') {
+          $transactions[$i]['name'] = $value;
+        }
+        if ($key == 'date_time') {
+          $date = new DateTime($value);
+          $transactions[$i]['month'] = $date->format('M');
+          $transactions[$i]['day'] = $date->format('j');
+        }
+      }
+    }
+
+    $bodydata['transactions'] = $transactions;
+
+    var_dump($bodydata);
+
+    $footerdata = array(
+      'localtime' => date('Y'),
+      'pagename' => 'Kid\'s Bank',
+      'scripts' => array(
+        array('script' => './../../../assets/js/jquery-3.6.0.min.js'),
+        array('script' => './../../../assets/js/bootstrap.min.js')
+      )
+    );
+
+    $this->load->view('templates/header', $headerdata);
+    $this->parser->parse('pages/account', $bodydata);
+    $this->parser->parse('templates/footer', $footerdata);
+  }
 }
