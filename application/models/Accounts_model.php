@@ -10,7 +10,6 @@ class Accounts_model extends CI_Model {
   }
 
   public function create_account($data) {
-
     return $this->db->insert('accounts', $data);
   }
 
@@ -33,5 +32,24 @@ class Accounts_model extends CI_Model {
     $result['transactions'] = $query_transactions->result_array();
 
     return $result;
+  }
+
+  public function match_user_account($account_id) {
+    $user_id = $this->session->userdata('user_id');
+    $this->db->where('user_id', $user_id);
+    $this->db->where('id', $account_id);
+    $query_account = $this->db->get('accounts');
+    if ($query_account->row_array()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public function create_transaction($data) {
+    $this->db->set('balance', $data['balance_after']);
+    $this->db->where('id', $data['account_id']);
+    $this->db->update('accounts');
+    return $this->db->insert('transactions', $data);
   }
 }
