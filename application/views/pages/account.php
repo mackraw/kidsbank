@@ -15,8 +15,8 @@ Account page.
     </div>
   </div>
 
-  <button type="button" id="newTransactionBtn" class="btn btn-success mb-5">+ New Transaction</button>
-  <button type="button" id="newTransferBtn" class="btn btn-success mb-5">+ New Transfer</button>
+  <a href="/account/{account_id}/newtransaction" id="newTransactionBtn" class="btn btn-success mb-5">+ New Transaction</a>
+  <a href="#" id="newTransferBtn" class="btn btn-success mb-5">+ New Transfer</a>
 
   <div class="card">
     <div class="card-header">
