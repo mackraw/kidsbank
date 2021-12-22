@@ -27,6 +27,11 @@
             </div>
             </select>
           </div>
+          <div class="form-group">
+            <label for="interest">Interest Rate</label>
+            <small class="msg text-danger"></small>
+            <input type="number" step="0.01" id="interest" class="form-control" name="interest" maxlength="64">
+          </div>
         </form>
 
         <div id="msg" class="mb-3"></div>
