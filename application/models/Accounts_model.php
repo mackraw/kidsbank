@@ -52,4 +52,11 @@ class Accounts_model extends CI_Model {
     $this->db->update('accounts');
     return $this->db->insert('transactions', $data);
   }
+
+  public function close_account($account_id) {
+    if ($this->match_user_account($account_id)) {
+      $this->db->where('id', $account_id);
+      return $this->db->delete('accounts');
+    }
+  }
 }
