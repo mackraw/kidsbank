@@ -71,7 +71,10 @@ const validate = () => {
     interest.toFixed(2);
     if(interest <= 0) {
       $("#interest").prev().text(`Only values greater than zero are allowed.`);
-        errors = true;
+      errors = true;
+    } else if (interest > 50) {
+      $("#interest").prev().text(`Let's not be greedy. Try sticking to a more reasonable interest rate.`);
+      errors = true;
     } else {
       inputs.push(interest);
     }
