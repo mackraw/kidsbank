@@ -7,7 +7,8 @@ const submitData = (args) => {
     type: "POST",
     data: {
       name: args[0],
-      type: args[1],
+      interest: args[1],
+      type: args[2],
     },
     success: function (response) {
       if (response === "okay") {
@@ -36,6 +37,7 @@ const submitData = (args) => {
 const validate = () => {
   let errors = false;
   const name = $("#name").val();
+  const interest = parseFloat($("#interest").val());
   const msgs = $(".msg");
   const accountType = $('input:radio');
   let inputs = [];
@@ -63,6 +65,17 @@ const validate = () => {
     $("#accountTypeSelection").prev().text(`Please select account type.`);
     errors = true;
   }
+
+  // validate interest rate
+  if (interest) {
+    interest.toFixed(2);
+    if(interest <= 0) {
+      $("#interest").prev().text(`Only values greater than zero are allowed.`);
+        errors = true;
+    } else {
+      inputs.push(interest);
+    }
+  } 
 
   // push selection to inputs array
   $.each(accountType, function () {
