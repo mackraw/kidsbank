@@ -30,14 +30,17 @@ Dashboard page.
       <div class="card-body">
 
         {accounts}
-        <div class="row justify-content-between mx-3 pb-3 pl-3 pr-3 border-bottom">
+        <div class="row justify-content-between mx-3 mb-3 pb-3 pl-3 pr-3 border-bottom">
           <div>
-            <div>
+            <h5>
               <a href="/account/{account_id}" class="font-weight-bold">{name}</a>
-            </div>
+            </h5>
             <div>
               <span class="text-secondary">Active since: {created_date}</span>
               <span class="ml-5 text-secondary">Account type: {type}</span>
+            </div>
+            <div class="mt-2">
+              <a href="/closeaccount/{account_id}" id="closeAccountBtn" class="font-light text-secondary bg-light pb-1 px-1 rounded"><small>Close Account</small></a>
             </div>
           </div>
           <div>
