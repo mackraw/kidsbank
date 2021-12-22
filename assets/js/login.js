@@ -86,4 +86,9 @@ $(document).ready(function () {
   $('#loginBtn').click(function (e) {
     handleLogin(e);
   });
+  $('.form-control').keypress(function (e) {
+    if (e.which == 13) {
+      handleLogin(e);
+    }
+  });
 });
