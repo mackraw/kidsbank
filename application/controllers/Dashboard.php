@@ -87,11 +87,12 @@ class Dashboard extends CI_Controller {
 
         $name = strip_tags(trim($this->input->post('name')));
         $type = strip_tags(trim($this->input->post('type')));
+        $interest = strip_tags(trim($this->input->post('interest')));
 
         $name = substr($name, 0, 64);
         $name = preg_replace("/[^a-zA-Z ]/", '', $name);
 
-        if (!empty($name) && !empty($type)) {
+        if (!empty($name) && !empty($type) && !empty($interest)) {
 
           switch ($type) {
             case 'checking':
@@ -105,7 +106,8 @@ class Dashboard extends CI_Controller {
           $data = array(
             'user_id' => (int) $this->session->userdata('user_id'),
             'type' => $type,
-            'name' => $name
+            'name' => $name,
+            'interest_rate' => $interest * 100
           );
 
           $response = $this->accounts_model->create_account($data);
@@ -126,12 +128,40 @@ class Dashboard extends CI_Controller {
 
   public function view($account_id = NULL) {
     $account = $this->accounts_model->get_account($account_id);
-
-    if (empty($account_id)) {
+    $user_account_match = $this->accounts_model->match_user_account($account_id);
+    if (empty($account_id) || !$user_account_match) {
       show_404();
     }
 
-    // add check to view only own account
+    // check when last interest was calculated
+    $current_date = new DateTime('NOW');
+    $last_interest = new DateTime($account['last_interest']);
+    $last_y = $last_interest->format('Y');
+    $last_m = $last_interest->format('n');
+    $next_interest = new DateTime;
+    $next_interest->setDate($last_y, $last_m + 1, 1);
+
+    // $mock_date = new DateTime('2022-02-10');
+    while ($current_date > $next_interest) {
+      // add interest
+      $account = $this->accounts_model->get_account($account_id);
+      $bal = $account['balance'];
+      $rate = $account['interest_rate'] / 10000;
+      $interest_amount = $bal * $rate;
+      $bal_after = $bal + (int) $interest_amount;
+      $data = array(
+        'account_id' => $account_id,
+        'date_time' => $next_interest->format('Y-m-d H:i:s'),
+        'trans_type_code' => '3',
+        'name' => 'Interest',
+        'trans_amount' => (int) $interest_amount,
+        'balance_after' => $bal_after
+      );
+      $this->accounts_model->create_transaction($data);
+      $next_interest->add(new DateInterval('P1M'));
+    }
+
+    $account = $this->accounts_model->get_account($account_id);
 
     $headerdata['pagetitle'] = $account['name'] . ' Account at Kids\' Bank';
 
@@ -154,6 +184,9 @@ class Dashboard extends CI_Controller {
             case '2':
               $transactions[$i]['type'] = 'Withdrawal';
               break;
+            case '3':
+              $transactions[$i]['type'] = 'Interest';
+              break;
           }
         }
         if ($key == 'trans_amount') {
@@ -175,7 +208,8 @@ class Dashboard extends CI_Controller {
       }
     }
 
-    $bodydata['transactions'] = $transactions;
+    $reversed_transactions = array_reverse($transactions);
+    $bodydata['transactions'] = $reversed_transactions;
 
     $footerdata = array(
       'localtime' => date('Y'),
