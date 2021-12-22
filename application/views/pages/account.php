@@ -42,7 +42,7 @@ Account page.
     </div>
 
     <a href="/account/{account_id}/newtransaction" id="newTransactionBtn" class="btn btn-success mb-5">+ New Transaction</a>
-    <a href="#" id="newTransferBtn" class="btn btn-success mb-5">+ New Transfer</a>
+    <a href="/newtransfer" id="newTransferBtn" class="btn btn-success mb-5">+ New Transfer</a>
 
     <div class="card">
       <div class="card-header">
