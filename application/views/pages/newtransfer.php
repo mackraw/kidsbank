@@ -17,7 +17,7 @@
             <select class="form-control" name="accountFrom" id="accountFrom">
               <option value="">--Please choose an account--</option>
               {accounts}
-              <option value="{account_id}">{account_name}</option>
+              <option value="{account_id}">{account_name} - {account_balance}</option>
               {/accounts}
             </select>
           </div>
@@ -27,7 +27,7 @@
             <select class="form-control" name="account-to" id="accountTo">
               <option value="">--Please choose an account--</option>
               {accounts}
-              <option value="{account_id}">{account_name}</option>
+              <option value="{account_id}">{account_name} - {account_balance}</option>
               {/accounts}
             </select>
           </div>
