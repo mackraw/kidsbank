@@ -14,11 +14,19 @@ const submitData = (args) => {
       name: args[4]
     },
     success: function (response) {
-      if (response === "okay") {
+      if (response === "2") { // created
         clearForm();
         $("#msg").removeClass("text-danger");
         $("#msg").addClass("text-success");
         $("#msg").text(`Transaction created. Redirecting you to your Dashboard...`);
+        setTimeout(()=>{
+          document.location.href = '/dashboard';
+        }, 2500);
+      } else if (response === '1') { // scheduled
+        clearForm();
+        $("#msg").removeClass("text-danger");
+        $("#msg").addClass("text-success");
+        $("#msg").text(`Transaction scheduled. Redirecting you to your Dashboard...`);
         setTimeout(()=>{
           document.location.href = '/dashboard';
         }, 2500);
@@ -109,12 +117,12 @@ const validate = () => {
   }
 
   // validate name
-  const reInvalidName = /[^a-zA-Z ]/g;
+  const reInvalidName = /[^a-zA-Z0-9 ]/g;
   if (name.trim() === "") {
     $("#name").prev().text(`This field cannot be empty.`);
     errors = true;
   } else if (reInvalidName.test(name)) {
-    $("#name").prev().text(`Only letters and spaces are allowed.`);
+    $("#name").prev().text(`Only letters, numbers and spaces are allowed.`);
     errors = true;
   } else {
     inputs.push(name);
