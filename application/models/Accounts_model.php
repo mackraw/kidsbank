@@ -53,6 +53,21 @@ class Accounts_model extends CI_Model {
     return $this->db->insert('transactions', $data);
   }
 
+  public function schedule_transaction($data) {
+    return $this->db->insert('scheduled', $data);
+  }
+
+  public function check_scheduled($account_id) {
+    $this->db->where('account_id', (int) $account_id);
+    $query = $this->db->get('scheduled');
+    return $query->result_array();
+  }
+
+  public function remove_scheduled_transaction($trans_id) {
+    $this->db->where('id', $trans_id);
+    return $this->db->delete('scheduled');
+  }
+
   public function close_account($account_id) {
     if ($this->match_user_account($account_id)) {
       $this->db->where('id', $account_id);
