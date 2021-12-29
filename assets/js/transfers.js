@@ -2,7 +2,6 @@
 // Client-side validation of the new transfer form.
 
 const submitData = (args) => {
-  console.log(args);
   $.ajax({
     url: "/dashboard/add_transfer",
     type: "POST",
@@ -102,10 +101,6 @@ const validate = () => {
   const sec = now.getSeconds();
   const dateArr = date.split('-');
   const transferDate = new Date(dateArr[0], dateArr[1]-1, dateArr[2], hr, min, sec+1);
-  console.log($('#transferDate'));
-  console.log(now);
-  console.log(date);
-  console.log(transferDate);
   if (!date) {
     $('#transferDate').prev().text(`Please enter a date.`);
     errors = true;
