@@ -2,8 +2,9 @@
 // Client-side validation of the new transaction form.
 
 const submitData = (args) => {
+  console.log(args);
   $.ajax({
-    url: "/dashboard/add_transaction",
+    url: "/transactions/add_transaction",
     type: "POST",
     data: {
       name: args[0],
@@ -20,6 +21,10 @@ const submitData = (args) => {
         setTimeout(()=>{
           document.location.href = '/dashboard';
         }, 2500);
+      } else if (response === '1') {
+        $("#msg").removeClass("text-success");
+        $("#msg").addClass("text-danger");
+        $("#msg").html("Insufficient funds!");
       } else {
         $("#msg").removeClass("text-success");
         $("#msg").addClass("text-danger");
