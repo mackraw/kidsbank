@@ -129,6 +129,18 @@
   background-position: center center;
 }
 
+/* TRANSACTIONS */
+.transaction {
+  background: radial-gradient(
+      ellipse at 75%,
+      hsla(130, 10%, 1%, 0.65) 30%,
+      hsla(130, 10%, 1%, 0.85)
+    ),
+    url(./../images/pay.jpg);
+  background-size: cover;
+  background-position: center center;
+}
+
 /* FEATURED ARTICLE */
 
 .featured div:first-child {
@@ -191,4 +203,12 @@ p {
 .money-l1 {
   font-size: clamp(1.3rem, 2.55vw, 1.8rem);
   vertical-align: middle;
+}
+
+.card-font {
+  font-size: clamp(0.7rem, 2vw, 1rem);
+}
+
+.card-font-primary {
+  font-size: clamp(0.9rem, 2.5vw, 1.5rem);
 }
