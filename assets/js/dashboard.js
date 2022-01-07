@@ -1,9 +1,43 @@
 "use strict";
-// Client-side validation to the login form.
+// Client-side validation to the new account form.
+
+const populateInterest = () => {
+  const accountType = $('input:radio');
+  const interest = $("#interest");
+  let type = '';
+  $.each(accountType, function () {
+    if ($(this)[0].checked) {
+      type = $(this)[0].value;
+    }
+  })
+  switch(type) {
+    case 'checking':
+      interest.html('');
+      interest.append('<option value="">--Please choose the interest rate--</option>');
+      interest.append('<option value="0">0.0%</option>');
+      interest.append('<option value="0.1">0.1%</option>');
+      interest.append('<option value="0.2">0.2%</option>');
+      break;
+    case 'credit':
+      interest.html('');
+      interest.append('<option value="">--Please choose the interest rate--</option>');
+      interest.append('<option value="14">14%</option>');
+      interest.append('<option value="19">19%</option>');
+      interest.append('<option value="27">27%</option>');
+      break;
+    case 'savings':
+      interest.html('');
+      interest.append('<option value="">--Please choose the interest rate--</option>');
+      interest.append('<option value="1">1%</option>');
+      interest.append('<option value="2">2%</option>');
+      interest.append('<option value="3">3%</option>');
+      break;
+  }
+}
 
 const submitData = (args) => {
   $.ajax({
-    url: "/dashboard/new_account",
+    url: "/accounts/new_account",
     type: "POST",
     data: {
       name: args[0],
@@ -61,23 +95,17 @@ const validate = () => {
   }
 
   // check that one radio button is selected
-  if (!accountType[0].checked && !accountType[1].checked) {
+  if (!accountType[0].checked && !accountType[1].checked && !accountType[2].checked) {
     $("#accountTypeSelection").prev().text(`Please select account type.`);
     errors = true;
   }
 
   // validate interest rate
-  if (interest) {
-    interest.toFixed(2);
-    if(interest <= 0) {
-      $("#interest").prev().text(`Only values greater than zero are allowed.`);
-      errors = true;
-    } else if (interest > 50) {
-      $("#interest").prev().text(`Let's not be greedy. Try sticking to a more reasonable interest rate.`);
-      errors = true;
-    } else {
-      inputs.push(interest);
-    }
+  if (Number.isNaN(interest)) {
+    $("#interest").prev().text(`Please select an interest rate.`);
+    errors = true;
+  } else {
+    inputs.push(interest);
   } 
 
   // push selection to inputs array
@@ -106,5 +134,8 @@ $(document).ready(function () {
   });
   $("#cancelBtn").click(function () {
     location.href = "dashboard";
+  });
+  $('input:radio').change(function (e) {
+    populateInterest(e);
   });
 });
