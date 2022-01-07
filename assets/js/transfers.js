@@ -3,34 +3,28 @@
 
 const submitData = (args) => {
   $.ajax({
-    url: "/dashboard/add_transfer",
+    url: "/transfers/add_transfer",
     type: "POST",
     data: {
       accountFrom: args[0],
       accountTo: args[1],
       amount: args[2],
-      date: args[3],
-      name: args[4]
+      name: args[3]
     },
     success: function (response) {
-      if (response === "2") { // created
+      if (response === "okay") { // created
         clearForm();
         $("#msg").removeClass("text-danger");
         $("#msg").addClass("text-success");
-        $("#msg").text(`Transaction created. Redirecting you to your Dashboard...`);
+        $("#msg").text(`Transaction processed. Redirecting you to your Dashboard...`);
         setTimeout(()=>{
           document.location.href = '/dashboard';
         }, 2500);
-      } else if (response === '1') { // scheduled
-        clearForm();
-        $("#msg").removeClass("text-danger");
-        $("#msg").addClass("text-success");
-        $("#msg").text(`Transaction scheduled. Redirecting you to your Dashboard...`);
-        setTimeout(()=>{
-          document.location.href = '/dashboard';
-        }, 2500);
+      } else if (response === '1') {
+        $("#msg").removeClass("text-success");
+        $("#msg").addClass("text-danger");
+        $("#msg").html("Insufficient funds!");
       } else {
-        console.log(response);
         $("#msg").removeClass("text-success");
         $("#msg").addClass("text-danger");
         $("#msg").html("Processing Error!");
@@ -50,7 +44,6 @@ const validate = () => {
   const accountFrom = $('#accountFrom').val();
   const accountTo = $('#accountTo').val();
   const amount = parseFloat($("#amount").val()).toFixed(2);
-  const date = $('#transferDate').val();
   const name = $("#name").val();
   const msgs = $(".msg");
   let inputs = [];
@@ -82,6 +75,8 @@ const validate = () => {
   }
 
   // validate amount
+  const i = $('#accountFrom')[0].options.selectedIndex;
+  const selectedAccountBalance = parseFloat($('#accountFrom')[0][i].dataset.balance.slice(1));
   const reValidAmount = /(((\d{0,3},?)?\d{0,3}){0,9}.?\d{2}?)|\d/g;
   if (!reValidAmount.test(amount)) {
     $('#amount').prev().text(`Please enter a valid amount.`);
@@ -89,26 +84,11 @@ const validate = () => {
   } else if (amount <= 0) {
     $("#amount").prev().text(`Amount must be greater than zero.`);
     errors = true;
+  } else if (amount > selectedAccountBalance) {
+    $('#accountFrom').prev().text(`Insufficient funds.`);
+    errors = true;
   } else {
     inputs.push(amount);
-  }
-
-  // validate date
-  // TODO validate properly
-  const now = new Date();
-  const hr = now.getHours();
-  const min = now.getMinutes();
-  const sec = now.getSeconds();
-  const dateArr = date.split('-');
-  const transferDate = new Date(dateArr[0], dateArr[1]-1, dateArr[2], hr, min, sec+1);
-  if (!date) {
-    $('#transferDate').prev().text(`Please enter a date.`);
-    errors = true;
-  } else if (transferDate < now) {
-    $('#transferDate').prev().text(`Only today and future dates are allowed.`);
-    errors = true;
-  } else {
-    inputs.push(date);
   }
 
   // validate name
