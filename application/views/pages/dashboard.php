@@ -21,7 +21,8 @@ Dashboard page.
       </div>
     </div>
 
-
+    <a href="newaccount" id="newAccountBtn" class="btn btn-success mb-5">+ New Account</a>
+    <a href="/newtransfer" id="newTransferBtn" class="btn btn-success mb-5">+ New Transfer</a>
 
     <div class="card">
       <div class="card-header">
@@ -30,26 +31,33 @@ Dashboard page.
       <div class="card-body">
 
         {accounts}
-        <div class="row justify-content-between mx-3 mb-3 pb-3 pl-3 pr-3 border-bottom">
-          <div>
-            <h5>
-              <a href="/account/{account_id}" class="font-weight-bold">{name}</a>
-            </h5>
-            <div>
-              <span class="text-secondary">Active since: {created_date}</span>
-              <span class="ml-5 text-secondary">Account type: {type}</span>
-            </div>
-            <div class="mt-2">
-              <a href="/closeaccount/{account_id}" id="closeAccountBtn" class="font-light text-secondary bg-light pb-1 px-1 rounded"><small>Close Account</small></a>
+        <div class="row justify-content-between mx-0 mb-3 pb-3 px-2 border-bottom">
+          <div class="col-9">
+            <div class="row">
+
+              <h5 class="col-12 p-0">
+                <a href="/account/{account_id}" class="font-weight-bold card-font-primary">{name}</a>
+              </h5>
+              <div class="col-12">
+                <div class="row justify-content-start">
+                  <span class="px-2 text-secondary card-font">Active since: {created_date}</span>
+                  <span class="px-2 text-secondary card-font">Account type: {type}</span>
+                </div>
+              </div>
+              <div class="row mt-2">
+                <div class="col-12">
+                  <a href="/closeaccount/{account_id}" id="closeAccountBtn" class="font-light text-secondary bg-light pb-1 px-2 rounded"><small>Close Account</small></a>
+                </div>
+              </div>
             </div>
           </div>
-          <div>
-            <span class="money-l1 font-weight-bold">{balance}</span>
+          <div class="col-3 p-0">
+            <span class="money-l1 font-weight-bold text-truncate card-font-primary">{balance}</span>
           </div>
         </div>
         {/accounts}
       </div>
     </div>
-    <a href="newaccount" id="newAccountBtn" class="btn btn-success mt-5">+ New Account</a>
+
   </div>
 </section>
