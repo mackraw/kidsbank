@@ -76,7 +76,7 @@ const validate = () => {
 
   // validate amount
   const i = $('#accountFrom')[0].options.selectedIndex;
-  const selectedAccountBalance = parseFloat($('#accountFrom')[0][i].dataset.balance.slice(1));
+  const selectedAccountBalance = parseFloat($('#accountFrom')[0][i].dataset.balance.slice(1).replace(',', ''));
   const reValidAmount = /(((\d{0,3},?)?\d{0,3}){0,9}.?\d{2}?)|\d/g;
   if (!reValidAmount.test(amount)) {
     $('#amount').prev().text(`Please enter a valid amount.`);
