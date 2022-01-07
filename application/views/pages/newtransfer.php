@@ -1,12 +1,12 @@
 <!-- A form to create a new transfer -->
 
-<section class="container-fluid">
+<section class="transaction container-fluid">
   <div class="row justify-content-start">
 
     <div class="p-4 my-2 mx-auto m-sm-5 col-sm-8 col-10 col-md-5 col-xl-4 bg-light rounded">
 
       <div>
-        <h1 class="display-6 text-center">Create a New Transfer</h1>
+        <h1 class="display-6 text-center">Record a New Transfer</h1>
       </div>
 
       <div class="form">
@@ -17,7 +17,7 @@
             <select class="form-control" name="accountFrom" id="accountFrom">
               <option value="">--Please choose an account--</option>
               {accounts}
-              <option value="{account_id}">{account_name} - {account_balance}</option>
+              <option value="{account_id}" data-balance="{account_balance}">{account_name} - {account_balance}</option>
               {/accounts}
             </select>
           </div>
@@ -34,12 +34,7 @@
           <div class="form-group">
             <label for="amount">Transfer Amount</label>
             <small class="msg text-danger"></small>
-            <input type="text" pattern="(((\d{0,3},?)?\d{0,3}){0,9}.?\d{2}?)|\d" id="amount" class="form-control" name="transaction-amount">
-          </div>
-          <div class="form-group">
-            <label for="amount">Transfer Date</label>
-            <small class="msg text-danger"></small>
-            <input type="date" id="transferDate" class="form-control" name="transfer-date">
+            <input type="text" pattern="(((\d{0,3},?)?\d{0,3}){0,9}.?\d{2}?)|\d" id="amount" class="form-control w-50" name="transaction-amount">
           </div>
           <div class="form-group">
             <label for="name">Transfer Name</label>

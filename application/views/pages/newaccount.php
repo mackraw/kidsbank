@@ -19,18 +19,28 @@
           <div class="form-group">
             <label>Account Type</label>
             <small class="msg text-danger"></small>
-            <div id="accountTypeSelection">
-              <input type="radio" value="checking" name="account-type" id="checking">
-              <label for="checking">Checking</label>
-              <input type="radio" value="credit" name="account-type" id="credit">
-              <label for="credit">Credit Card</label>
+            <div id="accountTypeSelection" class="d-flex justify-content-between">
+              <div>
+                <input type="radio" value="checking" name="account-type" id="checking">
+                <label for="checking">Checking</label>
+              </div>
+              <div>
+                <input type="radio" value="credit" name="account-type" id="credit">
+                <label for="credit">Credit Card</label>
+              </div>
+              <div>
+                <input type="radio" value="savings" name="account-type" id="savings">
+                <label for="savings">Savings</label>
+              </div>
             </div>
             </select>
           </div>
           <div class="form-group">
             <label for="interest">Interest Rate</label>
             <small class="msg text-danger"></small>
-            <input type="number" step="0.01" id="interest" class="form-control" name="interest" maxlength="64">
+            <select class="form-control" name="interest" id="interest">
+              <option value="">--Please select account type--</option>
+            </select>
           </div>
         </form>
 
