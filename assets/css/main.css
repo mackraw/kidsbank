@@ -129,6 +129,11 @@
   background-position: center center;
 }
 
+.content-wrapper {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
 /* TRANSACTIONS */
 .transaction {
   background: radial-gradient(

@@ -2,7 +2,7 @@
 Account page.
 ------------------- -->
 
-<section class="px-3 py-5 p-lg-5">
+<section class="content-wrapper px-3 py-5 p-lg-5">
   <div class="container-fluid">
     <div class="row">
       <div class="col mb-3 mb-lg-5">
