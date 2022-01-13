@@ -24,7 +24,7 @@ class Accounts extends CI_Controller {
         $interest = strip_tags(trim($this->input->post('interest')));
 
         $name = substr($name, 0, 64);
-        $name = preg_replace("/[^a-zA-Z ]/", '', $name);
+        $name = preg_replace("/[^a-zA-ZÀ-ſ ]/", '', $name);
 
         if (!empty($name) && !empty($type) && !empty($interest)) {
 

@@ -25,6 +25,7 @@ class Dashboard extends CI_Controller {
       $user_accounts_db = $this->accounts_model->get_accounts();
       $accounts = [];
       $total = 0;
+      $total_owed = 0;
       for ($i = 0; $i < count($user_accounts_db); $i++) {
         if ($user_accounts_db[$i]['status'] === '1') {
           foreach ($user_accounts_db[$i] as $key => $value) {
@@ -57,8 +58,13 @@ class Dashboard extends CI_Controller {
             }
           }
           if ($user_accounts_db[$i]['balance']) {
-            $dollars = $user_accounts_db[$i]['balance'] / 100;
-            $total += $dollars;
+            if ($user_accounts_db[$i]['type'] == '1' || $user_accounts_db[$i]['type'] == '3') {
+              $dollars = $user_accounts_db[$i]['balance'] / 100;
+              $total += $dollars;
+            } else if ($user_accounts_db[$i]['type'] == '2') {
+              $dollars = $user_accounts_db[$i]['balance'] / 100;
+              $total_owed += $dollars;
+            }
           }
         }
       }
@@ -66,6 +72,7 @@ class Dashboard extends CI_Controller {
 
       $fmt = numfmt_create('en_US', NumberFormatter::CURRENCY);
       $bodydata['total'] = numfmt_format_currency($fmt, (float) $total, "USD");
+      $bodydata['total_owed'] = numfmt_format_currency($fmt, (float) $total_owed, "USD");
 
       $footerdata = array(
         'localtime' => date('Y'),

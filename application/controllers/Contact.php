@@ -18,7 +18,7 @@ class Contact extends CI_Controller {
       $message = trim($this->input->post('message'));
 
       $name = substr($name, 0, 64);
-      $name = preg_replace("/[^a-zA-Z ]/", '', $name);
+      $name = preg_replace("/[^a-zA-ZÀ-ſ ]/", '', $name);
 
       $email = filter_var($email, FILTER_VALIDATE_EMAIL);
       $subject = substr($subject, 0, 64);

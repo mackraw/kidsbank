@@ -54,7 +54,7 @@ class Transactions extends CI_Controller {
 
         $name = strip_tags(trim($this->input->post('name')));
         $name = substr($name, 0, 64);
-        $name = preg_replace("/[^a-zA-Z0-9 ]/", '', $name);
+        $name = preg_replace("/[^a-zA-ZÀ-ſ0-9 ]/", '', $name);
 
         if ($amount > 0) {
 

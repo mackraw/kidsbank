@@ -109,7 +109,7 @@ class Credit extends CI_Controller {
 
         $name = strip_tags(trim($this->input->post('name')));
         $name = substr($name, 0, 64);
-        $name = preg_replace("/[^a-zA-Z0-9 ]/", '', $name);
+        $name = preg_replace("/[^a-zA-ZÀ-ſ0-9 ]/", '', $name);
 
         if (!empty($account_from) && !empty($account_to) && !empty($amount) && !empty($name)) {
           $from_valid = $this->accounts_model->match_user_account($account_from);

@@ -20,7 +20,7 @@ class Users extends CI_Controller {
       $passconf = trim($this->input->post('passconf'));
 
       $name = substr($name, 0, 64);
-      $name = preg_replace("/[^a-zA-Z ]/", '', $name);
+      $name = preg_replace("/[^a-zA-ZÀ-ſ ]/", '', $name);
 
       $email = filter_var($email, FILTER_VALIDATE_EMAIL);
       $password = substr($password, 0, 32);
@@ -98,6 +98,6 @@ class Users extends CI_Controller {
 
   public function logout() {
     $this->session->sess_destroy();
-    redirect('/', 'refresh');
+    redirect('https://kidsbank.live/', 'refresh');
   }
 }
