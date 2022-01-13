@@ -92,7 +92,7 @@ const validate = () => {
   }
 
   // validate name
-  const reInvalidName = /[^a-zA-Z0-9 ]/g;
+  const reInvalidName = /[^a-zA-ZÀ-ſ0-9 ]/g;
   if (name.trim() === "") {
     $("#name").prev().text(`This field cannot be empty.`);
     errors = true;

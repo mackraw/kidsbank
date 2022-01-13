@@ -64,7 +64,7 @@ function displayBanks(banks, location) {
 }
 
 function valid(input) {
-  const re = /(^([0-9]+[ ])?[0-9a-z]+([ ][0-9a-z]+)*,*[ ]*[0-9a-z]+(,[ ][a-z]{2})*,*([ ][0-9]{5})*$)|(^[a-z]{4,}[ ][a-z]{4,},[ ][a-z]{2}$)/gi;
+  const re = /(^([0-9]+[ ])?[0-9A-ZÀ-úa-z]+([ ][0-9A-ZÀ-úa-z]+)*,*[ ]*[0-9A-ZÀ-úa-z]+(,[ ][A-ZÀ-úa-z]{2})*,*([ ][0-9]{5})*$)|(^[A-ZÀ-úa-z]{4,}[ ][A-ZÀ-úa-z]{4,},[ ][A-ZÀ-úa-z]{2}$)/gi;
   return re.test(input);
 }
 

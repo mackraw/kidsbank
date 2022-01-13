@@ -129,7 +129,7 @@ const validate = () => {
     errors = true;
   }
   
-  const reInvalidName = /[^a-zA-Z0-9 ]/g;
+  const reInvalidName = /[^a-zA-ZÀ-ſ0-9 ]/g;
   if (reInvalidName.test(name)) {
     $("#name").prev().text(`Only letters, numbers and spaces are allowed.`);
     errors = true;

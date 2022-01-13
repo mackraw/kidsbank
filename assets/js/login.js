@@ -14,7 +14,7 @@ const submitData = (...args) => {
         $('#msg').removeClass('text-danger');
         $('#msg').addClass('text-success');
         $('#msg').html('Logging you in...');
-        location.href='dashboard';
+        location.href='/dashboard';
       } else {
         $('#msg').removeClass('text-success');
         $('#msg').addClass('text-danger');
