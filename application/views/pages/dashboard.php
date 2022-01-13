@@ -18,6 +18,10 @@ Dashboard page.
           <span>TOTAL BALANCE AVAILABLE</span>
           <span id="totalBalance" class="money-l1 font-weight-bold">{total}</span>
         </div>
+        <div class="row justify-content-between align-items-center mx-3 px-3">
+          <span>TOTAL BALANCE OWED</span>
+          <span id="totalBalance" class="money-l1 font-weight-bold">{total_owed}</span>
+        </div>
       </div>
     </div>
 
