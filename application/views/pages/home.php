@@ -21,7 +21,7 @@ Static page for Home.
       </div>
       <div class="col-lg-4 col-sm-10 mx-auto mb-5">
         <h3 class="col text-center mb-3 mb-lg-5 display-3">The Solution</h3>
-        <img class="icon mb-3 d-block mx-auto" src="./../../../assets/images/lightbulb.svg" alt="Picutre of a lightbulb.">
+        <img class="icon mb-3 d-block mx-auto" src="./../../../assets/images/lightbulb.svg" alt="Picture of a lightbulb.">
         <p class="text-muted">Let kids use a bank account! A Kids' Bank play account. Let them see their money accumulate interest if they save, or pay for interest if they forget to pay their bill. Let them "make a purchase" on credit and remember to pay it off on time. If it's past due, this bank will charge interest! You just add transactions.</p>
       </div>
     </div>
@@ -73,7 +73,7 @@ Static page for Home.
       <p class="col-auto col-md-5 m-md-auto my-3 text-muted">​Find banks based on your location or a search query. Uses your browser's Geolocation API and the LocationIQ API.</p>
     </div>
     <div class="row mb-3 justify-content-center">
-      <img class="col-10 col-md-5 order-md-2 img-fluid mb-3 mb-md-0 d-block mx-auto" src="./../../../assets/images/accounts.png" alt="Screenshot of bank account transaction history.">
+      <img class="col-10 col-md-5 order-md-2 img-fluid mb-3 mb-md-0 d-block mx-auto" src="./../../../assets/images/accounts-skw.png" alt="Screenshot of bank account transaction history.">
       <p class="col-auto col-md-5 order-md-1 m-md-auto my-3 text-muted">View transaction history for each of your accounts. Checking, savings, and credit card accounts available.</p>
     </div>
     <div class="row mb-3 justify-content-center">
