@@ -1,5 +1,9 @@
 # Kids' Bank
 
+View at https://kidsbank.live/
+
+## Motivation
+
 The idea behind Kids' Bank is that kids learn about money using cash (think pocket money, piggy banks). However, as young adults they enter the world of cashless transactions (online bank accounts, paying with plastic). 
 
 Kids' Bank attempts to fill the void by letting kids and teenagers record their pocket money transactions in their personal mock bank accounts.
